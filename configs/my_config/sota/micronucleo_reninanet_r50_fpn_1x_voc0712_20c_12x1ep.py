@@ -9,7 +9,12 @@ _base_ = [
 
 
 
-model = dict(roi_head=dict(bbox_head=dict(num_classes=3)))
+# model = dict(roi_head=dict(bbox_head=dict(num_classes=3)))
+model = dict(
+    bbox_head=dict(
+        num_classes=3
+    )
+)
 
 # training schedule, voc dataset is repeated 3 times, in
 # `_base_/datasets/voc0712.py`, so the actual epoch = 4 * 3 = 12
