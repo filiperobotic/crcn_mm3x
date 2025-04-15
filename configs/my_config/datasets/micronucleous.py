@@ -62,9 +62,9 @@ train_dataloader = dict(
                     # ann_file='VOC2007/ImageSets/Main/trainval.txt',
                     ann_file = 'annotations/train.json',
                     #ann_file='VOC2007/ImageSets/Main/trainval_debug_nano.txt',  # head -n 10 trainval.txt_ > trainval_debug_nano.txt 
-                    # data_prefix=dict(sub_data_root='annotations/'),
+                    data_prefix=dict(sub_data_root='annotations/'),
                     #img_prefix=(data_root + 'images/train/'),
-                    data_prefix=dict(data_root + 'images/train/'),
+                    # data_prefix=dict(sub_data_root='images/train/'),
                     serialize_data=True,  
                     filter_cfg=dict(
                         filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
@@ -94,8 +94,9 @@ val_dataloader = dict(
         data_root=data_root,
         #ann_file='VOC2007/ImageSets/Main/test.txt',
         ann_file = 'annotations/val.json',
-        #data_prefix=dict(sub_data_root='annotations/'),
-        data_prefix=dict(data_root + 'images/val/'),
+        data_prefix=dict(sub_data_root='annotations/'),
+        # data_prefix=dict(data_root + 'images/val/'),
+        # data_prefix=dict(sub_data_root='images/val/'),
         # img_prefix=(data_root + 'images/val/'),
         test_mode=True,
         pipeline=test_pipeline,
@@ -112,9 +113,9 @@ test_dataloader = dict(
         data_root=data_root,
         #ann_file='VOC2007/ImageSets/Main/test.txt',
         ann_file = 'annotations/test.json',
-        # data_prefix=dict(sub_data_root='annotations/'),
+        data_prefix=dict(sub_data_root='annotations/'),
         #img_prefix=(data_root + 'images/test/'),
-        data_prefix=dict(data_root + 'images/test/'),
+        # data_prefix=dict(data_root + 'images/test/'),
         test_mode=True,
         pipeline=test_pipeline,
         backend_args=backend_args))
