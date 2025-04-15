@@ -27,7 +27,7 @@ max_epochs = 50
 
 train_cfg=dict(
         # assigner=dict(type='ATSSAssigner', topk=9),
-        allowed_border=-1,
+        # allowed_border=-1,
         pos_weight=-1,
         debug=False)
 test_cfg=dict(
