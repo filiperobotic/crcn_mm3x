@@ -1,7 +1,8 @@
 
 _base_ = [
     '../models/faster-rcnn_r50_fpn.py',
-    '../datasets/voc0712_corrigido_v2_rep1.py',
+    #'../datasets/voc0712_corrigido_v2_rep1.py',
+    '../datasets/micronucleous.py',
     '../default_runtime.py'
 ]
 
