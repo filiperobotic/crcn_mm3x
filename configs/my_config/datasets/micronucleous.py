@@ -88,7 +88,7 @@ train_dataloader = dict(
 
 val_dataloader = dict(
     batch_size=2,
-    classes=classes,
+    # classes=classes,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
@@ -109,7 +109,7 @@ val_dataloader = dict(
 
 test_dataloader = dict(
     batch_size=2,
-    classes=classes,
+    # classes=classes,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
