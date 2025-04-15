@@ -28,7 +28,7 @@ train_pipeline = [
     # type='RandomChoiceResize',
     # scales=[(800, 600), (1000, 600), (1333, 800)],
     # keep_ratio=True),
-    dict(type='RandomCrop', crop_size=(512, 512), allow_negative_crop=True),
+    # dict(type='RandomCrop', crop_size=(512, 512), allow_negative_crop=True),
     # dict(type='Resize', scale=(1333, 800), keep_ratio=True),
     dict(type='RandomFlip', prob=0.5), #debug
     dict(type='PackDetInputs')
