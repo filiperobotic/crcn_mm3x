@@ -65,6 +65,7 @@ train_dataloader = dict(
                     #ann_file='VOC2007/ImageSets/Main/trainval_debug_nano.txt',  # head -n 10 trainval.txt_ > trainval_debug_nano.txt 
                     # data_prefix=dict(sub_data_root='annotations/'),
                     data_prefix=dict(img=data_root + 'images/train/'),
+                    metainfo=dict(classes=('BN', 'BNMN', 'MN')),
                     #img_prefix=(data_root + 'images/train/'),
                     # data_prefix=dict(sub_data_root='images/train/'),
                     serialize_data=False,
@@ -103,6 +104,7 @@ val_dataloader = dict(
         # data_prefix=dict(data_root + 'images/val/'),
         # data_prefix=dict(sub_data_root='images/val/'),
         # img_prefix=(data_root + 'images/val/'),
+        metainfo=dict(classes=('BN', 'BNMN', 'MN')),
         test_mode=True,
         pipeline=test_pipeline,
         backend_args=backend_args))
@@ -125,6 +127,7 @@ test_dataloader = dict(
         # data_prefix=dict(data_root + 'images/test/'),
         test_mode=True,
         pipeline=test_pipeline,
+        metainfo=dict(classes=('BN', 'BNMN', 'MN')),
         backend_args=backend_args))
 
 # Pascal VOC2007 uses `11points` as default evaluate mode, while PASCAL
