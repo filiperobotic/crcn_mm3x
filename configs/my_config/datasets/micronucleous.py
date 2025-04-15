@@ -88,6 +88,7 @@ train_dataloader = dict(
 
 val_dataloader = dict(
     batch_size=2,
+    classes=classes,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
@@ -108,6 +109,7 @@ val_dataloader = dict(
 
 test_dataloader = dict(
     batch_size=2,
+    classes=classes,
     num_workers=2,
     persistent_workers=True,
     drop_last=False,
@@ -127,6 +129,11 @@ test_dataloader = dict(
 
 # Pascal VOC2007 uses `11points` as default evaluate mode, while PASCAL
 # VOC2012 defaults to use 'area'.
-val_evaluator = dict(type='VOCMetric', metric='mAP', eval_mode='11points')
+# val_evaluator = dict(type='VOCMetric', metric='mAP', eval_mode='11points')
+val_evaluator = dict(
+    type='CocoMetric',
+    ann_file=data_root + 'annotations/test.json',
+    metric='bbox',
+    format_only=False)
 test_evaluator = val_evaluator 
 
