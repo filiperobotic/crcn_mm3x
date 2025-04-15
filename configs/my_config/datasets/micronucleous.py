@@ -69,8 +69,8 @@ train_dataloader = dict(
                     #img_prefix=(data_root + 'images/train/'),
                     # data_prefix=dict(sub_data_root='images/train/'),
                     serialize_data=False,
-                    # filter_cfg=dict(
-                    #     filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
+                    filter_cfg=dict(
+                        filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
                     pipeline=train_pipeline,
                     backend_args=backend_args)
                 # dict(
