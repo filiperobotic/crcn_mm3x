@@ -66,11 +66,11 @@ train_dataloader = dict(
                     data_prefix=dict(img=data_root + 'images/train/'),
                     #img_prefix=(data_root + 'images/train/'),
                     # data_prefix=dict(sub_data_root='images/train/'),
-                    serialize_data=False,  
-                    filter_cfg=dict(
-                        filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
+                    serialize_data=False,
+                    # filter_cfg=dict(
+                    #     filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
                     pipeline=train_pipeline,
-                    backend_args=backend_args),
+                    backend_args=backend_args)
                 # dict(
                 #     type=dataset_type,
                 #     data_root=data_root,
@@ -81,7 +81,8 @@ train_dataloader = dict(
                 #         filter_empty_gt=True, min_size=0, bbox_min_size=0), # MIN_SIZE & BBOX_MIN_SIZE ALTERADOS
                 #     pipeline=train_pipeline,
                 #     backend_args=backend_args)
-            ])))
+            ])
+            ))
 
 
 val_dataloader = dict(
