@@ -1,7 +1,6 @@
 
 _base_ = [
     '../models/faster-rcnn_r50_fpn.py',
-    #'../datasets/voc0712_corrigido_v2_rep1.py',
     '../datasets/micronucleous.py',
     '../default_runtime.py'
 ]
@@ -14,7 +13,7 @@ model = dict(roi_head=dict(bbox_head=dict(num_classes=3)))
 # training schedule, voc dataset is repeated 3 times, in
 # `_base_/datasets/voc0712.py`, so the actual epoch = 4 * 3 = 12
 #max_epochs = 12
-max_epochs = 50
+max_epochs = 1
 train_cfg = dict(
     type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=1)
 val_cfg = dict(type='ValLoop')
