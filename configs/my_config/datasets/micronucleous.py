@@ -120,6 +120,7 @@ val_evaluator = dict(
     type='CocoMetric',
     ann_file=data_root + 'annotations/test.json',
     metric='bbox',
-    format_only=False)
+    format_only=False, 
+    classwise=True)
 test_evaluator = val_evaluator 
 
