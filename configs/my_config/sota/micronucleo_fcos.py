@@ -23,8 +23,10 @@ model = dict(
 max_epochs = 100
 train_cfg = dict(
     type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=1)
-val_cfg = dict(type='ValLoop')
-test_cfg = dict(type='TestLoop')
+val_cfg = dict(type='ValLoop',
+               classwise=True)
+test_cfg = dict(type='TestLoop',
+                classwise=True)
 
 # learning rate
 param_scheduler = [
