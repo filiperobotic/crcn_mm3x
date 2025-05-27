@@ -24,7 +24,7 @@ def compute_iou(box1, box2):
 #config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
 config_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/configs/my_config/sota/micronucleo_fcos.py'
 #checkpoint_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/work_dirs/faster_baseline/retinaNet_crop_epochs_200/epoch_200.pth'
-checkpoint_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/work_dirs/fcos_baseline_1080_100ep/epoch_100.pth'
+checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_100ep/epoch_100.pth'
 ann_file = '/mnt/hd_pesquisa/pesquisa/datasets/micronucleo_kaggle/annotations/test.json'
 img_prefix = '/mnt/hd_pesquisa/pesquisa/datasets/micronucleo_kaggle/images/test/'
 
