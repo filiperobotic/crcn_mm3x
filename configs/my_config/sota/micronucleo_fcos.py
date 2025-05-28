@@ -20,7 +20,7 @@ model = dict(
 # training schedule, voc dataset is repeated 3 times, in
 # `_base_/datasets/voc0712.py`, so the actual epoch = 4 * 3 = 12
 #max_epochs = 12
-max_epochs = 100
+max_epochs = 200
 train_cfg = dict(
     type='EpochBasedTrainLoop', max_epochs=max_epochs, val_interval=1)
 val_cfg = dict(type='ValLoop'
