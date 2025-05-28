@@ -57,19 +57,19 @@ model = dict(
         max_per_img=100))
 
 # learning rate
-param_scheduler = [
-    dict(type='ConstantLR', factor=1.0 / 3, by_epoch=False, begin=0, end=500),
-    dict(
-        type='MultiStepLR',
-        begin=0,
-        end=12,
-        by_epoch=True,
-        milestones=[8, 11],
-        gamma=0.1)
-]
+# param_scheduler = [
+#     dict(type='ConstantLR', factor=1.0 / 3, by_epoch=False, begin=0, end=500),
+#     dict(
+#         type='MultiStepLR',
+#         begin=0,
+#         end=12,
+#         by_epoch=True,
+#         milestones=[8, 11],
+#         gamma=0.1)
+# ]
 
-# optimizer
-optim_wrapper = dict(
-    optimizer=dict(lr=0.01),
-    paramwise_cfg=dict(bias_lr_mult=2., bias_decay_mult=0.),
-    clip_grad=dict(max_norm=35, norm_type=2))
+# # optimizer
+# optim_wrapper = dict(
+#     optimizer=dict(lr=0.01),
+#     paramwise_cfg=dict(bias_lr_mult=2., bias_decay_mult=0.),
+#     clip_grad=dict(max_norm=35, norm_type=2))
