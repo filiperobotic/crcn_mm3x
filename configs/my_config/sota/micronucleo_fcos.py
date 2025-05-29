@@ -42,9 +42,9 @@ param_scheduler = [
 
 
 # optimizer
-# optim_wrapper = dict(
-#     type='OptimWrapper',
-#     optimizer=dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0001))
+optim_wrapper = dict(
+    type='OptimWrapper',
+    optimizer=dict(type='SGD', lr=0.001, momentum=0.9, weight_decay=0.0001))
 
 # Default setting for scaling LR automatically
 #   - `enable` means enable scaling LR automatically
@@ -65,8 +65,8 @@ auto_scale_lr = dict(enable=False, base_batch_size=16)
 # ]
 
 # # optimizer
-optim_wrapper = dict(
-    optimizer=dict(lr=0.01),
-    paramwise_cfg=dict(bias_lr_mult=2., bias_decay_mult=0.),
-    clip_grad=dict(max_norm=35, norm_type=2))
+# optim_wrapper = dict(
+#     optimizer=dict(lr=0.01),
+#     paramwise_cfg=dict(bias_lr_mult=2., bias_decay_mult=0.),
+#     clip_grad=dict(max_norm=35, norm_type=2))
 
