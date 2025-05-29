@@ -25,7 +25,7 @@ train_pipeline = [
     dict(type='LoadAnnotations', with_bbox=True),
     #dict(type='Resize', scale=(1000, 600), keep_ratio=True),
     dict(type='Resize', scale=(1080, 1080), keep_ratio=True),
-    dict(type='RandomCrop', crop_size=(512, 512), allow_negative_crop=True),
+    # dict(type='RandomCrop', crop_size=(512, 512), allow_negative_crop=True),
     dict(type='RandomFlip', prob=0.5), #debug
     dict(type='PackDetInputs')
 ]
