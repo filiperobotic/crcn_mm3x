@@ -9,6 +9,7 @@ batch_augments = [dict(type='BatchFixedSizePad', size=image_size)]
 norm_cfg = dict(type='BN', requires_grad=True)
 checkpoint = 'https://download.openmmlab.com/mmclassification/v0/efficientnet/efficientnet-b3_3rdparty_8xb32-aa_in1k_20220119-5b4887a0.pth'  # noqa
 model = dict(
+    type='EfficientNet',
     data_preprocessor=dict(
         type='DetDataPreprocessor',
         mean=[123.675, 116.28, 103.53],
