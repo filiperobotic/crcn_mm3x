@@ -2,6 +2,8 @@ from mmdet.apis import inference_detector, init_detector
 from pycocotools.coco import COCO
 import numpy as np
 from sklearn.metrics import precision_recall_fscore_support
+import csv
+import os
 
 def compute_iou(box1, box2):
     """Calcula IoU entre duas caixas"""
@@ -36,6 +38,17 @@ class_names = [cat_id_to_name[i] for i in sorted(cat_id_to_name)]
 y_true_all = []
 y_pred_all = []
 
+
+output_dir = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/'
+
+output_csv = os.path.join(output_dir,'predictions.csv')
+print(output_csv)
+#ok
+
+csv_file = open(output_csv, mode='w', newline='')
+csv_writer = csv.writer(csv_file)
+csv_writer.writerow(['image_name', 'class_id', 'score', 'x1', 'y1', 'x2', 'y2'])  # cabeçalho
+
 # Iterar sobre as imagens
 for img_id in coco.imgs:
     img_info = coco.loadImgs(img_id)[0]
@@ -58,6 +71,14 @@ for img_id in coco.imgs:
             continue
         x1, y1, x2, y2 = bbox.cpu().numpy()
         pred_list.append(((x1, y1, x2, y2), class_id.item(), score.item()))
+
+        # --- Salva a predição no CSV ---
+        csv_writer.writerow([
+            img_info['file_name'],
+            class_id.item(),
+            score.item(),
+            x1, y1, x2, y2
+        ])
 
     matched = set()
 
@@ -98,6 +119,10 @@ for yt, yp in zip(y_true_all, y_pred_all):
     if yt in valid_labels or yp in valid_labels:
         y_true_filtered.append(yt)
         y_pred_filtered.append(yp)
+
+# Fechar CSV
+csv_file.close()
+print(f"Predições salvas em: {output_csv}")
 
 # Calcular métricas
 precision, recall, fscore, support = precision_recall_fscore_support(
