@@ -23,10 +23,17 @@ def compute_iou(box1, box2):
     return inter_area / union_area if union_area > 0 else 0
 
 # --- SETUP ---
-#config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
+#retinanet
+config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
+checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep/epoch_200.pth'
+#fcos
 config_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/configs/my_config/sota/micronucleo_fcos.py'
-#checkpoint_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/work_dirs/faster_baseline/retinaNet_crop_epochs_200/epoch_200.pth'
 checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/epoch_200.pth'
+
+#config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
+
+#checkpoint_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/work_dirs/faster_baseline/retinaNet_crop_epochs_200/epoch_200.pth'
+
 ann_file = '/mnt/hd_pesquisa/pesquisa/datasets/micronucleo_kaggle/annotations/test.json'
 img_prefix = '/mnt/hd_pesquisa/pesquisa/datasets/micronucleo_kaggle/images/test/'
 
