@@ -22,7 +22,7 @@ def compute_iou(box1, box2):
 
     return inter_area / union_area if union_area > 0 else 0
 
-base_dir = "'/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/"
+base_dir = "/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/"
 
 # --- SETUP ---
 #retinanet
