@@ -14,17 +14,19 @@ def compute_iou(boxA, boxB):
 
 # Classe para nome (substitua conforme seu mapeamento)
 class_id_to_name = {
-    0: "BG",
+    0: "BN",
     1: "BNMN",
-    2: "MN",
-    3: "MONO"
+    2: "MN"
+    # 3: "MONO"
 }
 
 # Caminhos
 img_dir = "/Users/filipe/Downloads/micronucleo/images/test"
 pred_csv = "/Users/filipe/Desktop/artigo_micronucleo/predictions_fcos.csv"
+# pred_csv = "/Users/filipe/Desktop/artigo_micronucleo/predictions_retinanet.csv"
+# pred_csv = "/Users/filipe/Desktop/artigo_micronucleo/test.csv"
 gt_csv = "/Users/filipe/Desktop/artigo_micronucleo/test.csv"
-output_dir = "/Users/filipe/Desktop/artigo_micronucleo/imagens_com_caixas"
+output_dir = "/Users/filipe/Desktop/artigo_micronucleo/imagens_com_caixas_fcos"
 output_confusion_dir = "/Users/filipe/Desktop/artigo_micronucleo/"
 os.makedirs(output_dir, exist_ok=True)
 
@@ -34,15 +36,19 @@ gt_df = pd.read_csv(gt_csv)
 
 grouped_gt = gt_df.groupby("filename")
 grouped_pred = pred_df.groupby("image_name")
+# grouped_pred = pred_df.groupby("filename")
 image_names = set(gt_df["filename"]).union(pred_df["image_name"])
+# image_names = set(gt_df["filename"]).union(pred_df["filename"])
 
 # Fonte
 FONT_SIZE = 24
 try:
-    font = ImageFont.truetype("arial.ttf", FONT_SIZE)
+    # font = ImageFont.truetype("arial.ttf", FONT_SIZE)
+    font = ImageFont.truetype("/Library/Fonts/Arial Bold.ttf", FONT_SIZE)
 except IOError:
     # font = ImageFont.load_default()
-    font = ImageFont.truetype("/Library/Fonts/Arial.ttf", FONT_SIZE)
+    # font = ImageFont.truetype("/Library/Fonts/Arial.ttf", FONT_SIZE)
+    font = ImageFont.truetype("/Library/Fonts/Arial Bold.ttf", FONT_SIZE)
 
 def draw_label(draw, box, text, color, font):
     text_size = draw.textbbox((0, 0), text, font=font)
@@ -51,7 +57,9 @@ def draw_label(draw, box, text, color, font):
     x1, y1 = int(box[0]), int(box[1]) - text_height - 4
     x2, y2 = x1 + text_width + 6, y1 + text_height + 4
     draw.rectangle([x1, y1, x2, y2], fill=color)
-    draw.text((x1 + 3, y1 + 2), text, fill="white", font=font)
+    #draw.text((x1 + 3, y1 + 2), text, fill="white", font=font)
+    draw.text((x1 + 3, y1 + 2), text, fill="black", font=font)
+
 
 # Coleta para matriz de confusão
 y_true_all = []
@@ -83,9 +91,11 @@ for image_name in image_names:
             gt_class = gt['label']
             iou = compute_iou(pred_box, gt_box)
             if iou >= 0.5 and pred_class == gt_class:
-                draw.rectangle(pred_box, outline="green", width=10)
+                #draw.rectangle(pred_box, outline="green", width=10)
+                draw.rectangle(pred_box, outline="#00FF00", width=10)
                 text = f"{class_id_to_name.get(pred_class, str(pred_class))} {score:.2f}"
-                draw_label(draw, pred_box, text, "green", font)
+                #draw_label(draw, pred_box, text, "green", font)
+                draw_label(draw, pred_box, text, "#00FF00", font)
                 y_true_all.append(gt_class)
                 y_pred_all.append(pred_class)
                 gt_used.add(gt_idx)
@@ -93,9 +103,11 @@ for image_name in image_names:
                 break
 
         if not matched:
-            draw.rectangle(pred_box, outline="red", width=10)
+            #draw.rectangle(pred_box, outline="red", width=10)
+            draw.rectangle(pred_box, outline="#FF0000", width=10)
             text = f"{class_id_to_name.get(pred_class, str(pred_class))} {score:.2f}"
-            draw_label(draw, pred_box, text, "red", font)
+            #draw_label(draw, pred_box, text, "red", font)
+            draw_label(draw, pred_box, text, "#FF0000", font)
             y_true_all.append(-1)
             y_pred_all.append(pred_class)
 
@@ -103,9 +115,11 @@ for image_name in image_names:
         if gt_idx not in gt_used:
             gt_box = (gt['xmin'], gt['ymin'], gt['xmax'], gt['ymax'])
             gt_class = gt['label']
-            draw.rectangle(gt_box, outline="blue", width=10)
+            #draw.rectangle(gt_box, outline="blue", width=10)
+            draw.rectangle(gt_box, outline="#005EFF", width=10)
             text = f"{class_id_to_name.get(gt_class, str(gt_class))}"
-            draw_label(draw, gt_box, text, "blue", font)
+            #draw_label(draw, gt_box, text, "blue", font)
+            draw_label(draw, gt_box, text, "#005EFF", font)
             y_true_all.append(gt_class)
             y_pred_all.append(-1)
 

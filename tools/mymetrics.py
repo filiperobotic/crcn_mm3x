@@ -27,9 +27,12 @@ base_dir = "/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/"
 # --- SETUP ---
 #retinanet
 #config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
-config_file = os.path.join(base_dir,'configs/my_config/sota/micronucleo_reninanet_r50.py')
-checkpoint_file = os.path.join(base_dir,'work_dirs/retinanet_baseline_lr001/epoch_200.pth')
-output_dir = os.path.join(base_dir,'work_dirs/retinanet_baseline_lr001/')
+#config_file = os.path.join(base_dir,'configs/my_config/sota/micronucleo_reninanet_r50.py')
+config_file = os.path.join(base_dir,'configs/my_config/sota/micronucleo_faster-rcnn_r50..py')
+#checkpoint_file = os.path.join(base_dir,'work_dirs/retinanet_baseline_lr001/epoch_200.pth')
+checkpoint_file = os.path.join(base_dir,'work_dirs/faster_baseline_lr001/epoch_200.pth')
+#output_dir = os.path.join(base_dir,'work_dirs/retinanet_baseline_lr001/')
+output_dir = os.path.join(base_dir,'work_dirs/faster_baseline_lr001/')
 #fcos
 # config_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/configs/my_config/sota/micronucleo_fcos.py'
 # checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/epoch_200.pth'
