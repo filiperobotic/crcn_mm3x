@@ -22,13 +22,19 @@ def compute_iou(box1, box2):
 
     return inter_area / union_area if union_area > 0 else 0
 
+base_dir = "'/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/"
+
 # --- SETUP ---
 #retinanet
-config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
-checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep/epoch_200.pth'
+#config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
+config_file = os.path.join(base_dir,'configs/my_config/sota/micronucleo_reninanet_r50.py')
+checkpoint_file = os.path.join(base_dir,'/work_dirs/faster_baseline_lr001/epoch_200.pth')
+output_dir = os.path.join(base_dir,'work_dirs/faster_baseline_lr001/')
 #fcos
-config_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/configs/my_config/sota/micronucleo_fcos.py'
-checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/epoch_200.pth'
+# config_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/configs/my_config/sota/micronucleo_fcos.py'
+# checkpoint_file = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/epoch_200.pth'
+
+
 
 #config_file = '/mnt/hd_pesquisa/pesquisa/camile/crcn_mm3x/configs/my_config/sota/micronucleo_reninanet_r50_fpn_1x_voc0712_20c_12x1ep.py'
 
@@ -46,7 +52,7 @@ y_true_all = []
 y_pred_all = []
 
 
-output_dir = '/mnt/hd_pesquisa/pesquisa/filipe/crcn_mm3x/work_dirs/fcos_baseline_1080_200ep/'
+
 
 output_csv = os.path.join(output_dir,'predictions.csv')
 print(output_csv)
